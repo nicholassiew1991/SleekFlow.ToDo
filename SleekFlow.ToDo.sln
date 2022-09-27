@@ -6,6 +6,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{48156540
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleekFlow.ToDo.WebApi", "src\SleekFlow.ToDo.WebApi\SleekFlow.ToDo.WebApi.csproj", "{8EC31277-AC17-4613-A355-07D32409D579}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleekFlow.ToDo.WebApi.Test", "tests\SleekFlow.ToDo.WebApi.Test\SleekFlow.ToDo.WebApi.Test.csproj", "{AAC9571A-3C47-4A7B-923F-FC2F32DCAD19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,11 +15,16 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8EC31277-AC17-4613-A355-07D32409D579} = {7B95E487-611E-4B13-BDC2-3A6C43812F3E}
+		{AAC9571A-3C47-4A7B-923F-FC2F32DCAD19} = {48156540-2FA8-4D47-9BC7-172CE6AA5EF8}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8EC31277-AC17-4613-A355-07D32409D579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8EC31277-AC17-4613-A355-07D32409D579}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EC31277-AC17-4613-A355-07D32409D579}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EC31277-AC17-4613-A355-07D32409D579}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAC9571A-3C47-4A7B-923F-FC2F32DCAD19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAC9571A-3C47-4A7B-923F-FC2F32DCAD19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAC9571A-3C47-4A7B-923F-FC2F32DCAD19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAC9571A-3C47-4A7B-923F-FC2F32DCAD19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
