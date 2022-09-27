@@ -1,0 +1,6 @@
+### Rider IDE ###
+.idea
+
+### .NET ###
+**/obj/**
+**/bin/**
