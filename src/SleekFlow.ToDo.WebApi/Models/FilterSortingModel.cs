@@ -18,4 +18,7 @@ public class FilterSortingModel
     
     [FromQuery(Name = "status")]
     public string Status { get; set; }
+    
+    [FromQuery(Name = "sort")]
+    public string Sort { get; set; }
 }

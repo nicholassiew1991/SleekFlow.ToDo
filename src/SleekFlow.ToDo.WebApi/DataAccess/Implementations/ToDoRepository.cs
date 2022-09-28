@@ -28,6 +28,15 @@ public class ToDoRepository : IToDoRepository
                 AND (@status IS NULL OR status = @status)
         ";
 
+        StringBuilder sqlBuilder = new StringBuilder(sql);
+
+        if (string.IsNullOrWhiteSpace(filterSorting.Sort) == false)
+        {
+            string direction = filterSorting.Sort[0] == '+' ? "ASC" : "DESC";
+            sqlBuilder.Append($"ORDER BY {filterSorting.Sort.Substring(1)} {direction}");
+            Console.WriteLine(sqlBuilder.ToString());
+        }
+
         using (IDbConnection connection = this.GetConnection())
         {
             var param = new
@@ -39,7 +48,7 @@ public class ToDoRepository : IToDoRepository
                 status = filterSorting.Status
             };
             
-            return await connection.QueryAsync<ToDoEntity>(sql, param);
+            return await connection.QueryAsync<ToDoEntity>(sqlBuilder.ToString(), param);
         }
     }
 
