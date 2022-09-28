@@ -8,7 +8,7 @@ public interface IToDoRepository
 
     Task<ToDoEntity> Get(int id);
 
-    Task<int> Create(ToDoEntity entity);
+    Task<ToDoEntity> Create(ToDoEntity entity);
 
     Task<int> Update(int id, ToDoEntity entity);
 

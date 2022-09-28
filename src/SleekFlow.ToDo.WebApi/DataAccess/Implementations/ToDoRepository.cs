@@ -35,13 +35,13 @@ public class ToDoRepository : IToDoRepository
         }
     }
 
-    public async Task<int> Create(ToDoEntity entity)
+    public async Task<ToDoEntity> Create(ToDoEntity entity)
     {
-        const string sql = "INSERT INTO todo (name, dueDate, status) VALUES (@Name, @DueDate, @Status)";
+        const string sql = "INSERT INTO todo (name, dueDate, status) VALUES (@Name, @DueDate, @Status) RETURNING *";
 
         using (IDbConnection connection = this.GetConnection())
         {
-            return await connection.ExecuteAsync(sql, entity);
+            return await connection.QuerySingleAsync<ToDoEntity>(sql, entity);
         }
     }
 
