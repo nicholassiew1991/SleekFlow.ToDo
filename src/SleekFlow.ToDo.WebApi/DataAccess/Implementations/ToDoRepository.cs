@@ -45,14 +45,14 @@ public class ToDoRepository : IToDoRepository
         }
     }
 
-    public async Task<int> Update(int id, ToDoEntity entity)
+    public async Task<ToDoEntity> Update(int id, ToDoEntity entity)
     {
-        const string sql = "UPDATE todo SET name = @Name, dueDate = @DueDate, status = @Status WHERE id = @id";
+        const string sql = "UPDATE todo SET name = @Name, dueDate = @DueDate, status = @Status WHERE id = @id RETURNING *";
 
         using (IDbConnection connection = this.GetConnection())
         {
             var param = new { id, entity.Name, entity.DueDate, entity.Status };
-            return await connection.ExecuteAsync(sql, param);
+            return await connection.QuerySingleAsync<ToDoEntity>(sql, param);
         }
     }
 

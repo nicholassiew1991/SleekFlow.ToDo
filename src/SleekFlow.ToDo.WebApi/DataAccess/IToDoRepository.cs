@@ -10,7 +10,7 @@ public interface IToDoRepository
 
     Task<ToDoEntity> Create(ToDoEntity entity);
 
-    Task<int> Update(int id, ToDoEntity entity);
+    Task<ToDoEntity> Update(int id, ToDoEntity entity);
 
     Task<int> Delete(int id);
 }
