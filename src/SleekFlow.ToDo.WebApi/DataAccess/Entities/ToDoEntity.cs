@@ -6,7 +6,7 @@ public class ToDoEntity
     
     public string Name { get; set; }
     
-    public string DueDate { get; set; }
+    public long DueDate { get; set; }
     
     public string Status { get; set; }
 }
