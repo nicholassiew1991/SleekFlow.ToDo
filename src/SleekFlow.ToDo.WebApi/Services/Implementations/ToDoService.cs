@@ -24,9 +24,9 @@ public class ToDoService : IToDoService
         return this._mapper.Map<ToDoModel>(toDoEntity);
     }
 
-    public async Task<IEnumerable<ToDoModel>> GetAll()
+    public async Task<IEnumerable<ToDoModel>> GetAll(FilterSortingModel filterSorting)
     {
-        IEnumerable<ToDoEntity> results = await this._toDoRepository.GetAll();
+        IEnumerable<ToDoEntity> results = await this._toDoRepository.GetAll(filterSorting);
         return this._mapper.Map<IEnumerable<ToDoModel>>(results);
     }
 

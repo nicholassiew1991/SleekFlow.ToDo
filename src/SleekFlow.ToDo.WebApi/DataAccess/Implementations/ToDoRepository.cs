@@ -1,7 +1,9 @@
 using System.Data;
+using System.Text;
 using Dapper;
 using Microsoft.Data.Sqlite;
 using SleekFlow.ToDo.WebApi.DataAccess.Entities;
+using SleekFlow.ToDo.WebApi.Models;
 
 namespace SleekFlow.ToDo.WebApi.DataAccess.Implementations;
 
@@ -14,13 +16,30 @@ public class ToDoRepository : IToDoRepository
         this._configuration = configuration;
     }
     
-    public async Task<IEnumerable<ToDoEntity>> GetAll()
+    public async Task<IEnumerable<ToDoEntity>> GetAll(FilterSortingModel filterSorting)
     {
-        const string sql = "SELECT id, name, dueDate, status FROM todo";
+        const string sql = @"
+            SELECT id, name, dueDate, status
+            FROM todo
+            WHERE (@id IS NULL OR id = @id)
+                AND (@name IS NULL OR name = @name)
+                AND (@from IS NULL OR dueDate >= @from)
+                AND (@to IS NULL OR dueDate <= @to)
+                AND (@status IS NULL OR status = @status)
+        ";
 
         using (IDbConnection connection = this.GetConnection())
         {
-            return await connection.QueryAsync<ToDoEntity>(sql);
+            var param = new
+            {
+                id = filterSorting.Id.HasValue == false ? (int?) null : filterSorting.Id.Value,
+                name = filterSorting.Name,
+                from = filterSorting.From.HasValue == false ? (long?) null : filterSorting.From.Value.ToUnixTimeMilliseconds(),
+                to = filterSorting.To.HasValue == false ? (long?) null : filterSorting.To.Value.ToUnixTimeMilliseconds(),
+                status = filterSorting.Status
+            };
+            
+            return await connection.QueryAsync<ToDoEntity>(sql, param);
         }
     }
 

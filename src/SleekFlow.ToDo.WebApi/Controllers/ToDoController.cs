@@ -16,9 +16,9 @@ public class ToDoController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> Get([FromQuery] FilterSortingModel qs)
     {
-        IEnumerable<ToDoModel> todos = await this._toDoService.GetAll();
+        IEnumerable<ToDoModel> todos = await this._toDoService.GetAll(qs);
         return this.Ok(todos);
     }
 

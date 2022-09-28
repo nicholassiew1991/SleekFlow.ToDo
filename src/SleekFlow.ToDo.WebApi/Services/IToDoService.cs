@@ -6,7 +6,7 @@ public interface IToDoService
 {
     Task<ToDoModel> Get(int id);
     
-    Task<IEnumerable<ToDoModel>> GetAll();
+    Task<IEnumerable<ToDoModel>> GetAll(FilterSortingModel filterSorting);
 
     Task<ToDoModel> Create(ToDoModel model);
 
