@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using SleekFlow.ToDo.WebApi.Models;
+using SleekFlow.ToDo.WebApi.Services;
 
 namespace SleekFlow.ToDo.WebApi.Controllers;
 
@@ -6,16 +8,45 @@ namespace SleekFlow.ToDo.WebApi.Controllers;
 [Route("/api/[controller]")]
 public class ToDoController : ControllerBase
 {
-    private readonly ILogger<ToDoController> _logger;
+    private readonly IToDoService _toDoService;
 
-    public ToDoController(ILogger<ToDoController> logger)
+    public ToDoController(IToDoService toDoService)
     {
-        this._logger = logger;
+        this._toDoService = toDoService;
     }
 
     [HttpGet]
-    public IActionResult Get()
+    public async Task<IActionResult> Get()
     {
-        return this.Ok(new { Message = "Hello" });
+        IEnumerable<ToDoModel> todos = await this._toDoService.GetAll();
+        return this.Ok(todos);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> Get(int id)
+    {
+        ToDoModel todo = await this._toDoService.Get(id);
+        return (todo == null) ? this.NotFound() : this.Ok(todo);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(ToDoModel model)
+    {
+        model = await this._toDoService.Create(model);
+        return this.Ok(model);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, ToDoModel model)
+    {
+        model = await this._toDoService.Update(id, model);
+        return this.Ok(model);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        await this._toDoService.Delete(id);
+        return this.Ok();
     }
 }
