@@ -34,7 +34,6 @@ public class ToDoRepository : IToDoRepository
         {
             string direction = filterSorting.Sort[0] == '+' ? "ASC" : "DESC";
             sqlBuilder.Append($"ORDER BY {filterSorting.Sort.Substring(1)} {direction}");
-            Console.WriteLine(sqlBuilder.ToString());
         }
 
         using (IDbConnection connection = this.GetConnection())
