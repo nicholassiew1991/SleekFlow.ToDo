@@ -29,7 +29,7 @@ Then open swagger in:
 
 ## Query All with Filter and Sorting
 
-Url: ``GET /api/todo/``
+Url: ``GET /api/todo``
 
 Query String Parameters
 
