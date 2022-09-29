@@ -15,7 +15,11 @@ builder.Services.AddAutoMapper(x => x.AddProfile(typeof(ToDoMappingProfile)));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    string xml = Path.Combine(System.AppContext.BaseDirectory, "SleekFlow.ToDo.WebApi.xml");
+    c.IncludeXmlComments(xml);
+});
 
 var app = builder.Build();
 

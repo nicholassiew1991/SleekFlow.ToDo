@@ -15,6 +15,11 @@ public class ToDoController : ControllerBase
         this._toDoService = toDoService;
     }
 
+    /// <summary>
+    /// Get all the To-Do Tasks
+    /// </summary>
+    /// <param name="qs"></param>
+    /// <returns>List of ToDoModel</returns>
     [HttpGet]
     public async Task<IActionResult> Get([FromQuery] FilterSortingModel qs)
     {
@@ -22,6 +27,11 @@ public class ToDoController : ControllerBase
         return this.Ok(todos);
     }
 
+    /// <summary>
+    /// Get To-Do Task
+    /// </summary>
+    /// <param name="id">ID</param>
+    /// <returns>ToDoModel</returns>
     [HttpGet("{id}")]
     public async Task<IActionResult> Get(int id)
     {
@@ -29,6 +39,11 @@ public class ToDoController : ControllerBase
         return (todo == null) ? this.NotFound() : this.Ok(todo);
     }
 
+    /// <summary>
+    /// Create To-Do Task
+    /// </summary>
+    /// <param name="model">ToDoModel</param>
+    /// <returns>ToDoModel</returns>
     [HttpPost]
     public async Task<IActionResult> Create(ToDoModel model)
     {
@@ -36,6 +51,12 @@ public class ToDoController : ControllerBase
         return this.Ok(model);
     }
 
+    /// <summary>
+    /// Update To-Do Task
+    /// </summary>
+    /// <param name="id">ID</param>
+    /// <param name="model">ToDoModel</param>
+    /// <returns>ToDoModel</returns>
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, ToDoModel model)
     {
@@ -43,6 +64,11 @@ public class ToDoController : ControllerBase
         return this.Ok(model);
     }
 
+    /// <summary>
+    /// Delete To-Do Task
+    /// </summary>
+    /// <param name="id">ID</param>
+    /// <returns></returns>
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
