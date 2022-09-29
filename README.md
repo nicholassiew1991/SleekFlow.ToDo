@@ -16,4 +16,4 @@ Run the following docker command to start this application in docker container
 
 Then open swagger in:
 
-``https://localhost:10000/swagger/index.html``
+``http://localhost:10000/swagger/index.html``
