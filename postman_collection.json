@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "22f34396-9dae-4e8d-a8e2-4c35b28e505c",
+		"name": "SleekFlow.ToDo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7046/api/ToDo?sort=-id",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7046",
+					"path": [
+						"api",
+						"ToDo"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Task 1",
+							"disabled": true
+						},
+						{
+							"key": "from",
+							"value": "2021-10-01T13%3A46%3A03.81%2B00%3A00",
+							"description": "2022-10-01T13:46:03.81+00:00",
+							"disabled": true
+						},
+						{
+							"key": "to",
+							"value": "2022-10-30T13%3A46%3A03.81%2B00%3A00",
+							"description": "2022-10-01T13:46:03.81+00:00",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "New",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "-id",
+							"description": "(+) Represent as ASC and (-) Represent as DESC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7046/api/ToDo/:id",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7046",
+					"path": [
+						"api",
+						"ToDo",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Task 6\",\n  \"dueDate\": \"2022-10-01T13:46:03.81+00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7046/api/ToDo",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7046",
+					"path": [
+						"api",
+						"ToDo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Task 6\",\n    \"dueDate\": \"2022-10-01T13:46:03.81+00:00\",\n    \"status\": \"Done\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7046/api/ToDo/:id",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7046",
+					"path": [
+						"api",
+						"ToDo",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7046/api/ToDo/:id",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7046",
+					"path": [
+						"api",
+						"ToDo",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
