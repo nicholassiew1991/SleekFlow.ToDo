@@ -1,3 +1,7 @@
+# Technical Stack
+- ASP .NET Core 6
+- Dapper + SQLite
+
 # How to start the project
 
 ## .NET
